@@ -1,5 +1,5 @@
 {
-	"name": "pipeline2",
+	"name": "7_city_blank_fail",
 	"properties": {
 		"activities": [
 			{
@@ -46,6 +46,23 @@
 				}
 			}
 		],
+		"variables": {
+			"name": {
+				"type": "Array"
+			},
+			"city": {
+				"type": "Array"
+			},
+			"name_final": {
+				"type": "Array"
+			},
+			"name_fi": {
+				"type": "String"
+			},
+			"city_final": {
+				"type": "String"
+			}
+		},
 		"annotations": []
 	}
 }
