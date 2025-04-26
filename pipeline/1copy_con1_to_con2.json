@@ -63,6 +63,23 @@
 				]
 			}
 		],
+		"variables": {
+			"name": {
+				"type": "Array"
+			},
+			"city": {
+				"type": "Array"
+			},
+			"name_final": {
+				"type": "Array"
+			},
+			"name_fi": {
+				"type": "String"
+			},
+			"city_final": {
+				"type": "String"
+			}
+		},
 		"annotations": []
 	}
 }

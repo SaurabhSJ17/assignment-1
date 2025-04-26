@@ -1,5 +1,5 @@
 {
-	"name": "pipeline1",
+	"name": "3each_col_list",
 	"properties": {
 		"activities": [
 			{
@@ -63,32 +63,34 @@
 						{
 							"name": "Append variable2",
 							"type": "AppendVariable",
-							"state": "Inactive",
-							"onInactiveMarkAs": "Succeeded",
 							"dependsOn": [],
 							"userProperties": [],
 							"typeProperties": {
-								"variableName": "id",
-								"value": ""
+								"variableName": "name",
+								"value": {
+									"value": "@item().name",
+									"type": "Expression"
+								}
 							}
 						},
 						{
 							"name": "Append variable3",
 							"type": "AppendVariable",
-							"state": "Inactive",
-							"onInactiveMarkAs": "Succeeded",
 							"dependsOn": [],
 							"userProperties": [],
 							"typeProperties": {
-								"variableName": "name",
-								"value": ""
+								"variableName": "city",
+								"value": {
+									"value": "@item().city",
+									"type": "Expression"
+								}
 							}
 						}
 					]
 				}
 			},
 			{
-				"name": "Set variable1",
+				"name": "var_id",
 				"type": "SetVariable",
 				"dependsOn": [
 					{
@@ -112,29 +114,8 @@
 				}
 			},
 			{
-				"name": "Set variable2",
+				"name": "var_name",
 				"type": "SetVariable",
-				"state": "Inactive",
-				"onInactiveMarkAs": "Succeeded",
-				"dependsOn": [
-					{
-						"activity": "ForEach1",
-						"dependencyConditions": [
-							"Succeeded"
-						]
-					}
-				],
-				"policy": {
-					"secureOutput": false,
-					"secureInput": false
-				},
-				"userProperties": []
-			},
-			{
-				"name": "Set variable3",
-				"type": "SetVariable",
-				"state": "Inactive",
-				"onInactiveMarkAs": "Succeeded",
 				"dependsOn": [
 					{
 						"activity": "ForEach1",
@@ -149,9 +130,33 @@
 				},
 				"userProperties": [],
 				"typeProperties": {
-					"variableName": "var_id",
+					"variableName": "name_fi",
 					"value": {
-						"value": "@variables('id')",
+						"value": "@join(variables('name'),',')",
+						"type": "Expression"
+					}
+				}
+			},
+			{
+				"name": "var_city",
+				"type": "SetVariable",
+				"dependsOn": [
+					{
+						"activity": "ForEach1",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"variableName": "city_final",
+					"value": {
+						"value": "@join(variables('city'),',')",
 						"type": "Expression"
 					}
 				}
@@ -162,6 +167,21 @@
 				"type": "Array"
 			},
 			"id_final": {
+				"type": "String"
+			},
+			"name": {
+				"type": "Array"
+			},
+			"city": {
+				"type": "Array"
+			},
+			"name_final": {
+				"type": "Array"
+			},
+			"name_fi": {
+				"type": "String"
+			},
+			"city_final": {
 				"type": "String"
 			}
 		},
