@@ -1,0 +1,36 @@
+{
+	"name": "skip2",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "AzureDataLakeStorage1",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "DelimitedText",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobFSLocation",
+				"folderPath": "fol1",
+				"fileSystem": "sj-container"
+			},
+			"columnDelimiter": ",",
+			"escapeChar": "\\",
+			"firstRowAsHeader": true,
+			"quoteChar": "\""
+		},
+		"schema": [
+			{
+				"name": "city_id",
+				"type": "String"
+			},
+			{
+				"name": "city_name",
+				"type": "String"
+			},
+			{
+				"name": "state_name",
+				"type": "String"
+			}
+		]
+	}
+}
